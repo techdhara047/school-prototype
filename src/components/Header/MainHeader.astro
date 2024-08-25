@@ -1,0 +1,48 @@
+---
+import { Icon } from "astro-icon/components"
+---
+<div data-overlay class="fixed inset-0 bg-black md:hidden opacity-70 hidden"></div>
+<header data-header class="flex fixed w-[300px] z-10 inset-0 bg-white transition-all duration-500 ml-[-300px] p-4 items-center justify-center text-[1.4rem]  md:text-[1rem]
+  md:justify-stretch md:relative md:inset-auto md:bg-transparent md:flex md:w-full md:ml-auto">
+ <span data-cancel class="block md:hidden text-[2.8rem] absolute top-4 right-4"> <Icon data-cancel name="mdi:close-circle" /></span>
+
+    <nav class="flex flex-col gap-6 md:flex-row md:justify-between md:w-full">
+        <ul>
+            <li class="text-[1.5em] md:text-[1em]"><a href="/" class="italic">School Name</a></li>
+        </ul>
+        <ul class="flex flex-col gap-6 md:flex-row items-center">
+            <li class="md:mx-2 font-bold transition hover:translate-x-1"><a href="/" class="hover:text-blue-400">Home</a></li>
+            <li class="md:mx-2 font-bold transition hover:translate-x-1"><a href="/about" class="hover:text-blue-400">About</a></li>
+            <li class="md:mx-2 font-bold transition hover:translate-x-1"><a href="/branches" class="hover:text-blue-400">Branches</a></li>
+            <li class="md:mx-2 font-bold transition hover:translate-x-1"><a href="/topper" class="hover:text-blue-400">Topper</a></li>
+            <!-- <li class="mx-2 font-bold"><a href="/media">Media</a></li> -->
+            <li class="md:mx-2 font-bold transition hover:translate-x-1"><a href="/blog" class="hover:text-blue-400">Blog</a></li>
+            <li class="font-bold transition hover:translate-x-1"><a href="/contact" class="hover:text-blue-400">Contact Us</a></li>
+    
+        </ul>
+    </nav>
+</header>
+
+<script>
+    const path = window.location.pathname;
+    console.log(path);
+    const overlay = document.querySelector('[data-overlay]') as HTMLDivElement;
+    const header = document.querySelector('[data-header]') as HTMLDivElement;
+    // select the cancel button
+    const cancelButton = document.querySelector('span[data-cancel]') as HTMLSpanElement;
+    cancelButton.addEventListener("click", () => {
+        
+        header.classList.remove("ml-[0px]")
+        header.classList.add("ml-[-300px]")
+        overlay.classList.add("hidden")
+
+    })
+    // overlay
+    overlay.addEventListener("click", () => {
+        header.classList.remove("ml-[0px]")
+        header.classList.add("ml-[-300px]")
+        overlay.classList.add("hidden")
+
+    })
+    
+</script>

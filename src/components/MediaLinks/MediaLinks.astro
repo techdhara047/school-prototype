@@ -1,0 +1,28 @@
+---
+import MediaLink from "./MediaLink.astro"
+const {color, bgColor} = Astro.props;
+
+// list of icons and their links
+const links = [
+    {
+        icon:'mdi:facebook',
+        link: 'https://www.facebook.com/',
+        
+    },
+    {
+         icon:'mdi:twitter',
+        link: 'https://www.facebook.com/'
+    },
+    {
+        icon:'mdi:linkedin',
+        link: 'https://www.facebook.com/'
+    }
+]
+---
+
+<div class="flex gap-2">
+    {
+        links.map((link) => <MediaLink icon={link.icon} href={link.link} color={color} bgColor={bgColor}/>)
+    }
+    
+</div>

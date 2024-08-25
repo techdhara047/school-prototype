@@ -1,0 +1,16 @@
+---
+import { Icon } from 'astro-icon/components'
+
+interface Props {
+  icon: string;
+  href: string;
+  color?:string,
+  bgColor?:string
+}
+const {icon, href, color="red", bgColor="red"} = Astro.props;
+---
+
+<a href={href} class="h-[2em] w-[2em] flex justify-center items-center rounded-full" style={{ backgroundColor: bgColor}}>
+    <Icon name={icon} class="text-[1em]" color={color}/>
+</a>
+
