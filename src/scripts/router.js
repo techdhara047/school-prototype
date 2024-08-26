@@ -4,7 +4,7 @@ turbo.start();
 
 // Use the Turbo load event to handle re-initialization
 document.addEventListener("turbo:load", () => {
-  const menuIcon = document.querySelector("li[data-menu]") as HTMLLIElement;
+  const menuIcon = document.querySelector("li[data-menu]");
   if (menuIcon) {
     menuIcon.addEventListener("click", () => {
       const header = document.querySelector("[data-header]") as HTMLDivElement;
@@ -23,7 +23,7 @@ document.addEventListener("turbo:load", () => {
 
   const path = window.location.pathname.split("/")[1];
   // get nav links
-  const navLinks = document.querySelectorAll<HTMLAnchorElement>("[data-link]");
+  const navLinks = document.querySelectorAll("[data-link]");
   navLinks.forEach((link) => {
     console.log(path, link.getAttribute("href"));
     if (link?.getAttribute("href")?.split("/")[1] === path) {
@@ -31,13 +31,13 @@ document.addEventListener("turbo:load", () => {
     }
   });
   // overlay element
-  const overlay = document.querySelector("[data-overlay]") as HTMLDivElement;
+  const overlay = document.querySelector("[data-overlay]") ;
   // header element
-  const header = document.querySelector("[data-header]") as HTMLDivElement;
+  const header = document.querySelector("[data-header]");
   // select the cancel button
   const cancelButton = document.querySelector(
     "span[data-cancel]"
-  ) as HTMLSpanElement;
+  ) 
   cancelButton.addEventListener("click", () => {
     header.classList.remove("ml-[0px]");
     header.classList.add("ml-[-300px]");
