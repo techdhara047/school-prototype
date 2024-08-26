@@ -2,9 +2,9 @@
 import { Icon } from "astro-icon/components"
 ---
 <div data-overlay class="fixed inset-0 bg-black md:hidden opacity-70 hidden"></div>
-<header data-header class="flex fixed w-[300px] z-10 inset-0 bg-white transition-all duration-500 ml-[-300px] p-4 items-center justify-center text-[1.2rem]  md:text-[1rem]
-  md:justify-stretch md:relative md:inset-auto md:bg-transparent md:flex md:w-full md:ml-auto">
- <span data-cancel class="block md:hidden text-[2.8rem] absolute top-4 right-4"> <Icon data-cancel name="mdi:close-circle" /></span>
+<header data-header class="flex fixed w-[300px] z-10 inset-0 bg-white transition-all duration-500 ml-[-300px] p-4 items-center justify-center text-[1.2rem] md:text-[1rem]
+  md:justify-stretch md:relative md:inset-auto md:bg-transparent md:w-full md:ml-auto">
+ <span data-cancel class="block md:hidden text-[2.5rem] absolute top-4 right-4"> <Icon data-cancel name="mdi:close-circle" /></span>
 
     <nav class="flex flex-col gap-6 md:flex-row md:justify-between md:w-full">
         <ul>
@@ -30,6 +30,8 @@ import { Icon } from "astro-icon/components"
     const navLinks = document.querySelectorAll<HTMLAnchorElement>("[data-link]");
         navLinks.forEach(link => {
             if(link.href === path){
+            console.log(path,link.href);
+            
                 link.classList.add("text-green-600")
             }
         })
