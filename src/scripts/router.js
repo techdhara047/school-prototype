@@ -7,10 +7,8 @@ document.addEventListener("turbo:load", () => {
   const menuIcon = document.querySelector("li[data-menu]");
   if (menuIcon) {
     menuIcon.addEventListener("click", () => {
-      const header = document.querySelector("[data-header]") as HTMLDivElement;
-      const overlay = document.querySelector(
-        "[data-overlay]"
-      ) as HTMLDivElement;
+      const header = document.querySelector("[data-header]");
+      const overlay = document.querySelector("[data-overlay]");
 
       if (overlay && header) {
         overlay.classList.remove("hidden");
@@ -31,13 +29,11 @@ document.addEventListener("turbo:load", () => {
     }
   });
   // overlay element
-  const overlay = document.querySelector("[data-overlay]") ;
+  const overlay = document.querySelector("[data-overlay]");
   // header element
   const header = document.querySelector("[data-header]");
   // select the cancel button
-  const cancelButton = document.querySelector(
-    "span[data-cancel]"
-  ) 
+  const cancelButton = document.querySelector("span[data-cancel]");
   cancelButton.addEventListener("click", () => {
     header.classList.remove("ml-[0px]");
     header.classList.add("ml-[-300px]");
