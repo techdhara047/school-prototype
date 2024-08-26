@@ -8,23 +8,8 @@ const bgColor = "black"
 ---
 <div class="px-4 py-2 flex justify-between items-center text-[1rem] md:text-[0.75rem] border-b-[1px] bg-green-200">
     <ul >
-        <li data-menu class="block md:hidden"><Icon name="mdi:menu" class="text-[1.4em]" /></li>
+        <li data-menu class="block md:hidden"><Icon name="mdi:menu" class="text-[1.4em]  cursor-pointer" /></li>
     </ul>
     <MediaLinks color={color} bgColor={bgColor}/>
 </div>
 
-<script>
-    const menuIcon = document.querySelector("li[data-menu]") as HTMLLIElement;
-    menuIcon.addEventListener("click",()=>{
-        const header = document.querySelector("[data-header]") as HTMLDivElement;
-        const overlay = document.querySelector('[data-overlay]') as HTMLDivElement;
-      
-        overlay.classList.remove("hidden")
-        overlay.classList.add("block")
-        header.classList.add("ml-[0px]");
-        header.classList.remove("ml-[-300px]")
-       
-       
-    })
-
-</script>
