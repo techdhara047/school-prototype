@@ -25,14 +25,12 @@ import { Icon } from "astro-icon/components"
 
 <script>
     // get path
-    const path = window.location.href;
+    const path =  window.location.pathname.split("/")[1];
     // get nav links
     const navLinks = document.querySelectorAll<HTMLAnchorElement>("[data-link]");
         navLinks.forEach(link => {
-            console.log(path,link.href);
-            if(link.href === path){
-           
-            
+            console.log(path,link.getAttribute('href'));
+            if(link?.getAttribute('href')?.split("/")[1] === path){
                 link.classList.add("text-green-600")
             }
         })
