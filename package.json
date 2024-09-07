@@ -12,10 +12,11 @@
   "dependencies": {
     "@astrojs/check": "^0.9.3",
     "@astrojs/react": "^3.6.2",
+    "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.0",
     "@hotwired/turbo": "^8.0.5",
     "@iconify-json/mdi": "^1.1.68",
-    "astro": "^4.14.3",
+    "astro": "^4.15.4",
     "astro-icon": "^1.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
