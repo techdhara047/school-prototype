@@ -10,15 +10,19 @@ import '../styles/global.css'
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="school website" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
 		<title>School Name</title>
 		<script>
 			import '../scripts/router.js';
 		  </script>
 	</head>
 	<body>
-		<div class="box">
-			<TopHeader />
-			<MainHeader />
+		<div class="container">
+			<div class="header-container">
+				<TopHeader />
+				<MainHeader />
+			</div>
 			<main>
 				<slot />
 			</main>
@@ -26,3 +30,13 @@ import '../styles/global.css'
 		
 	</body>
 </html>
+
+<style>
+	.header-container {
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+</style>

@@ -1,0 +1,100 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from 'astro:content';
+
+// Fetch all banner data
+const banners = await getCollection('banners');
+// Filter only included banners
+const includedBanners = banners.filter(banner => banner.data.include);
+console.log(includedBanners);
+
+---
+
+<div class="banner-carousel">
+ 
+  {
+    includedBanners.map((banner: any) => {       
+        return (
+          <figure>
+          
+            <Image
+              src={banner.data.image}
+              widths={[240, 540, 720, banner.data.image.width]}
+              sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${banner.data.image.width}px`}
+              alt={banner.data.title}
+              class="image"
+            />
+          </figure>
+        );
+      }
+    )
+  }
+</div>
+
+<style>
+  .banner-carousel {
+  
+    width: 100%;
+    height: 100%;
+    position: relative;
+ 
+  }
+  figure {
+   
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  .image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  
+
+  .fade-in {
+    opacity: 1;
+  }
+  .fade-out {
+    opacity: 0;
+  }
+
+</style>
+
+<script>
+  document.addEventListener("turbo:load", function () {
+    const carousels = document.querySelectorAll(".banner-carousel");
+
+    carousels.forEach((carousel) => {
+      const images = carousel.querySelectorAll("figure");
+      const totalImages = images.length;
+      let currentIndex = Math.floor(Math.random() * totalImages); // Randomly select initial index
+      const transitionDelay = 5000; // Total delay for each image transition (4 seconds)
+      const fadeDuration = 1000; // Duration of fade in and out (1 second)
+
+      function showNextImage() {
+        // Fade out the current image
+        images[currentIndex].classList.remove("fade-in");
+        images[currentIndex].classList.add("fade-out");
+
+        // Move to the next image
+        currentIndex = (currentIndex + 1) % images.length;
+
+        // Fade in the next image
+        images[currentIndex].classList.remove("fade-out");
+        images[currentIndex].classList.add("fade-in");
+
+        // Set timeout to manage the total delay including fade duration
+        setTimeout(showNextImage, transitionDelay);
+      }
+
+      // Initialize the first image
+      images[currentIndex].classList.add("fade-in");
+
+      // Start the transition sequence
+      setTimeout(showNextImage, transitionDelay);
+    });
+  });
+</script>
